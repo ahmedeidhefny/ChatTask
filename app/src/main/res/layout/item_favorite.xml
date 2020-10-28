@@ -18,7 +18,7 @@
         <ImageView
             android:id="@+id/favorite_user_imageView"
             android:layout_width="match_parent"
-            android:layout_height="200dp"
+            android:layout_height="150dp"
             android:scaleType="fitXY"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -30,7 +30,7 @@
             android:id="@+id/favorite_user_textView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="@dimen/margin_padding_size_small"
+            android:layout_margin="@dimen/margin_padding_size_micro"
             android:gravity="center_horizontal"
             style="@style/TextAppearance.AppCompat.Title"
             app:layout_constraintBottom_toBottomOf="parent"

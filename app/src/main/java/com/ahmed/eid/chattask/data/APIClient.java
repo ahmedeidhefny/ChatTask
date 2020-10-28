@@ -21,7 +21,7 @@ public class APIClient {
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl(BASE_URL)
                 .addConverterFactory(GsonConverterFactory.create())
-                //.addCallAdapterFactory(RxJava2CallAdapterFactory.create())
+                .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                 .build();
 
         apiEndPointInterface = retrofit.create(APIEndPointInterface.class);
@@ -40,7 +40,7 @@ public class APIClient {
         return apiEndPointInterface.getDataScreenOne();
     }
 
-    public Call<ScreenTwoResponse> getDataScreenTwo(){
+    public Observable<ScreenTwoResponse> getDataScreenTwo(){
         return apiEndPointInterface.getDataScreenTwo();
     }
 }

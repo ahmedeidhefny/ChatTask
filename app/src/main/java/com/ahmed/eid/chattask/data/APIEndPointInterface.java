@@ -15,6 +15,6 @@ public interface APIEndPointInterface {
     Call<ScreenOneResponse> getDataScreenOne();
 
     @GET("Screen_2.json")
-    Call<ScreenTwoResponse> getDataScreenTwo();
+    Observable<ScreenTwoResponse> getDataScreenTwo();
 
 }

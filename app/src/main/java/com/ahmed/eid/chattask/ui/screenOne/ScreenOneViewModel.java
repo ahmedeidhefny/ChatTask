@@ -20,21 +20,22 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 
-public class ScreenOneViewModel extends ViewModel{
+public class ScreenOneViewModel extends ViewModel {
     private MutableLiveData<ScreenOneResponse> mData = new MutableLiveData<>();
-    //private CompositeDisposable compositeDisposable = new CompositeDisposable();
+    private CompositeDisposable compositeDisposable = new CompositeDisposable();
+
     public ScreenOneViewModel() {
     }
 
     public MutableLiveData<ScreenOneResponse> getDataScreenOne() {
 
 //        compositeDisposable.add(APIClient.getInstance().getDataScreenOne()
-//                .subscribeOn(Schedulers.io())
+//                .subscribeOn(Schedulers.newThread())
 //                .observeOn(AndroidSchedulers.mainThread())
 //                .subscribe(new Consumer<ScreenOneResponse>() {
 //                    @Override
-//                    public void accept(ScreenOneResponse screenOneResponse) throws Exception {
-//                        mData.setValue(screenOneResponse);
+//                    public void accept(ScreenOneResponse mAllData) throws Exception {
+//                        mData.setValue(mAllData);
 //                    }
 //                }));
 
