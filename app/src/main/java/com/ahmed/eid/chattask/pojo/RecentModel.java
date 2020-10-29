@@ -1,9 +1,12 @@
 package com.ahmed.eid.chattask.pojo;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class RecentModel {
+public class RecentModel implements Parcelable {
 
     @SerializedName("Name")
     @Expose
@@ -35,6 +38,40 @@ public class RecentModel {
         Time = time;
         New = aNew;
     }
+
+    protected RecentModel(Parcel in) {
+        Name = in.readString();
+        Pic = in.readString();
+        Message = in.readString();
+        Time = in.readString();
+        New = in.readInt();
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(Name);
+        dest.writeString(Pic);
+        dest.writeString(Message);
+        dest.writeString(Time);
+        dest.writeInt(New);
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    public static final Creator<RecentModel> CREATOR = new Creator<RecentModel>() {
+        @Override
+        public RecentModel createFromParcel(Parcel in) {
+            return new RecentModel(in);
+        }
+
+        @Override
+        public RecentModel[] newArray(int size) {
+            return new RecentModel[size];
+        }
+    };
 
     public String getName() {
         return Name;
