@@ -57,6 +57,11 @@ public class MainActivity extends AppCompatActivity {
         fab = findViewById(R.id.fab);
         mViewModel = ViewModelProviders.of(this).get(ScreenOneViewModel.class);
         mPagerAdapter = new PagerAdapter(this, getSupportFragmentManager());
+        //mPagerAdapter.addFragments(RecentFragment.newInstance());
+        //mPagerAdapter.addFragments(FavoriteFragment.newInstance());
+        mViewPager.setAdapter(mPagerAdapter);
+        mTabs.setupWithViewPager(mViewPager);
+
     }
 
 
@@ -70,10 +75,8 @@ public class MainActivity extends AppCompatActivity {
         });
     }
     private void handleTabs(ScreenOneResponse mData) {
-
         mPagerAdapter.addFragments(RecentFragment.newInstance(mData.getRecentList()));
         mPagerAdapter.addFragments(FavoriteFragment.newInstance(mData.getFavoriteList()));
-        mViewPager.setAdapter(mPagerAdapter);
-        mTabs.setupWithViewPager(mViewPager);
+        mPagerAdapter.notifyDataSetChanged();
     }
 }

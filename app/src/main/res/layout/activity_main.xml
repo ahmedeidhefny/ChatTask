@@ -37,9 +37,10 @@
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fab"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="@dimen/fab_width_height"
+        android:layout_height="@dimen/fab_width_height"
         android:layout_gravity="bottom|end"
         android:layout_margin="@dimen/fab_margin"
+        android:elevation="@dimen/fab_elevation"
         android:src="@drawable/ic_baseline_arrow" />
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

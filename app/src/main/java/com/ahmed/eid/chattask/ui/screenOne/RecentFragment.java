@@ -1,5 +1,6 @@
 package com.ahmed.eid.chattask.ui.screenOne;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -19,6 +20,8 @@ import com.ahmed.eid.chattask.R;
 import com.ahmed.eid.chattask.pojo.FavoriteModel;
 import com.ahmed.eid.chattask.pojo.RecentModel;
 import com.ahmed.eid.chattask.pojo.ScreenOneResponse;
+import com.ahmed.eid.chattask.ui.main.MainActivity;
+import com.ahmed.eid.chattask.ui.screenTwo.ChatMassagesActivity;
 
 import java.util.ArrayList;
 
@@ -51,11 +54,8 @@ public class RecentFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        //Log.e("reclog", "data: " + getArguments().getInt("x", 0));
         if (getArguments() != null) {
             mRecentList = getArguments().getParcelableArrayList(ARG_RECENT_LIST_KEY);
-        } else {
-            Log.e("reclog", "data is  null");
         }
 
     }
@@ -65,6 +65,7 @@ public class RecentFragment extends Fragment {
                              Bundle savedInstanceState) {
         mRootView = inflater.inflate(R.layout.fragment_recent, container, false);
         initializeUI();
+        //mAdapter.setOnClickItemListener();
         return mRootView;
     }
 
@@ -77,14 +78,24 @@ public class RecentFragment extends Fragment {
     private void initializeUI() {
         mRecentRecycler = mRootView.findViewById(R.id.recent_recyclerView);
         mAdapter = new RecentAdapter(getActivity());
+        mRecentRecycler.setLayoutManager(new LinearLayoutManager(getActivity()));
+
     }
 
     private void PopulateUI() {
+
         if (mRecentList != null) {
-            mRecentRecycler.setLayoutManager(new LinearLayoutManager(getActivity()));
             mAdapter.setRecent(mRecentList);
             mRecentRecycler.setAdapter(mAdapter);
             mAdapter.notifyDataSetChanged();
+
+            mAdapter.setOnClickItemListener(new RecentAdapter.OnClickItemListener() {
+                @Override
+                public void onItemClicked(int position) {
+                    Intent screenTwoIntent = new Intent(getActivity(), ChatMassagesActivity.class);
+                    startActivity(screenTwoIntent);
+                }
+            });
         } else {
             Toast.makeText(getActivity(), "rec is null", Toast.LENGTH_SHORT).show();
         }

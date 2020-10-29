@@ -21,8 +21,9 @@ import de.hdodenhof.circleimageview.CircleImageView;
 
 public class RecentAdapter extends RecyclerView.Adapter<RecentAdapter.RecentViewHolder> {
 
-    ArrayList<RecentModel> recentList;
-    Context mContext;
+    private ArrayList<RecentModel> recentList;
+    private Context mContext;
+    private OnClickItemListener mOnClickItemListener;
 
     public RecentAdapter(Context mContext) {
         this.mContext = mContext;
@@ -30,6 +31,10 @@ public class RecentAdapter extends RecyclerView.Adapter<RecentAdapter.RecentView
 
     public void setRecent(ArrayList<RecentModel> recentList) {
         this.recentList = recentList;
+    }
+
+    public void setOnClickItemListener(OnClickItemListener onClickItemListener) {
+        this.mOnClickItemListener = onClickItemListener;
     }
 
     @NonNull
@@ -51,6 +56,13 @@ public class RecentAdapter extends RecyclerView.Adapter<RecentAdapter.RecentView
                 .error(R.drawable.unknown_user)
                 .into(holder.mUserImage);
 
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                mOnClickItemListener.onItemClicked(position);
+            }
+        });
+
     }
 
     @Override
@@ -61,13 +73,19 @@ public class RecentAdapter extends RecyclerView.Adapter<RecentAdapter.RecentView
     public class RecentViewHolder extends RecyclerView.ViewHolder {
         private TextView mUserName, mRecentMassage, mMassageDate;
         private CircleImageView mUserImage;
+        private View itemView;
 
         public RecentViewHolder(@NonNull View itemView) {
             super(itemView);
+            this.itemView = itemView;
             mUserName = itemView.findViewById(R.id.recent_userName_textView);
             mUserImage = itemView.findViewById(R.id.recent_user_imageView);
             mRecentMassage = itemView.findViewById(R.id.recent_massage_textView);
             mMassageDate = itemView.findViewById(R.id.massage_date_textView);
         }
+    }
+
+    public interface OnClickItemListener {
+        void onItemClicked(int position);
     }
 }
