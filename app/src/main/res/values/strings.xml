@@ -4,6 +4,10 @@
     <string name="tab_recent">Recent</string>
 
     <string name="massage_no_data">Sorry, No Found Data..</string>
-
+    <string name="content_des_noInternet_image">No Internet</string>
+    <string name="noInternet_header_massage">Whoops!</string>
+    <string name="noInternet_massage">No Internet Connection, Make Sure Wi-Fi or Cellular-data is turned On, Then Try Agin  ..</string>
+    <string name="content_des_icon">Icon</string>
+    <string name="retry_btn_text">retry</string>
 
 </resources>

@@ -6,4 +6,6 @@
 
     <color name="colorChatBackground">#F3EDED</color>
     <color name="photo_placeholder">#ccc</color>
+    <color name="itemBackground">#EEEEEE</color>
+
 </resources>
