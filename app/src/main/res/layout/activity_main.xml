@@ -6,6 +6,19 @@
     android:layout_height="match_parent"
     tools:context=".ui.main.MainActivity">
 
+    <include
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        layout="@layout/partial_loading_bar"
+        android:layout_gravity="center"
+        />
+    <include
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        layout="@layout/partial_no_internet"
+        android:layout_gravity="center"
+        />
+
     <androidx.viewpager.widget.ViewPager
         android:id="@+id/view_pager"
         android:layout_width="match_parent"
