@@ -1,12 +1,12 @@
 ### Simple Chat Task....
 
-## - Have have a two screen :
-# 1- The first Screen
+#### - Have have a two screen :
+##### 1- The first Screen
 ----- on Main Activity shows Recent and Favorite in Fragments.
-# 2- The Secend Screen
+##### 2- The Secend Screen
 ----- when onClickItemRecent or onClick fab shows massages.
 
-## Tools:
+#### Tools:
 - App Developed By Programming Language Java.
 - App Designed By XML.
 - Migrate app to AndroidX.
