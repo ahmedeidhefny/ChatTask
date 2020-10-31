@@ -1,6 +1,6 @@
-### Simple Chat Task....
+### Simple Chat Task App....
 
-#### - Have have a two screen :
+#### - App have a two screen :
 ##### 1- The first Screen
 ----- on Main Activity shows Recent and Favorite in Fragments.
 ##### 2- The Secend Screen
