@@ -39,8 +39,8 @@ public class MainActivity extends AppCompatActivity {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent screenTwoIntent = new Intent(MainActivity.this, ChatMassagesActivity.class);
-                startActivity(screenTwoIntent);
+                Intent SendToScreenTwoIntent = new Intent(MainActivity.this, ChatMassagesActivity.class);
+                startActivity(SendToScreenTwoIntent);
             }
         });
     }

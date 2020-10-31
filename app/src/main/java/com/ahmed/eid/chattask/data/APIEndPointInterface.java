@@ -11,6 +11,8 @@ import retrofit2.http.GET;
 public interface APIEndPointInterface {
 
 
+
+
     @GET("Screen_1.json")
     Call<ScreenOneResponse> getDataScreenOne();
 

@@ -13,6 +13,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.ahmed.eid.chattask.R;
@@ -29,8 +30,10 @@ public class FavoriteFragment extends Fragment {
 
     private View mRootView;
     private RecyclerView mFavoriteRecycler;
+    private TextView mDisplayNoDataMassage;
     private FavoriteAdapter adapter;
     private StaggeredGridLayoutManager sglManager;
+
 
     public FavoriteFragment() {
     }
@@ -76,6 +79,7 @@ public class FavoriteFragment extends Fragment {
 
     private void initializeUI() {
         mFavoriteRecycler = mRootView.findViewById(R.id.favorite_recyclerView);
+        mDisplayNoDataMassage = mRootView.findViewById(R.id.display_no_data_massage);
         adapter = new FavoriteAdapter(getActivity());
         sglManager = new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL);
     }
@@ -83,12 +87,16 @@ public class FavoriteFragment extends Fragment {
     private void PopulateUI() {
 
         if (mFavoriteList != null) {
+            mFavoriteRecycler.setVisibility(View.VISIBLE);
+            mDisplayNoDataMassage.setVisibility(View.GONE);
+
             mFavoriteRecycler.setLayoutManager(sglManager);
             adapter.setFavorites(mFavoriteList);
             mFavoriteRecycler.setAdapter(adapter);
             adapter.notifyDataSetChanged();
         }else {
-            Toast.makeText(getActivity(), "fav is null", Toast.LENGTH_SHORT).show();
+            mFavoriteRecycler.setVisibility(View.GONE);
+            mDisplayNoDataMassage.setVisibility(View.VISIBLE);
         }
     }
 }

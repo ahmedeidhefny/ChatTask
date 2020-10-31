@@ -33,6 +33,7 @@ public class RecentFragment extends Fragment {
 
     private View mRootView;
     private RecyclerView mRecentRecycler;
+    private TextView mDisplayNoDataMassage;
     private RecentAdapter mAdapter;
 
     public RecentFragment() {
@@ -65,8 +66,14 @@ public class RecentFragment extends Fragment {
                              Bundle savedInstanceState) {
         mRootView = inflater.inflate(R.layout.fragment_recent, container, false);
         initializeUI();
-        //mAdapter.setOnClickItemListener();
         return mRootView;
+    }
+
+    private void initializeUI() {
+        mRecentRecycler = mRootView.findViewById(R.id.recent_recyclerView);
+        mDisplayNoDataMassage = mRootView.findViewById(R.id.display_no_data_massage);
+        mAdapter = new RecentAdapter(getActivity());
+        mRecentRecycler.setLayoutManager(new LinearLayoutManager(getActivity()));
     }
 
     @Override
@@ -75,16 +82,13 @@ public class RecentFragment extends Fragment {
         PopulateUI();
     }
 
-    private void initializeUI() {
-        mRecentRecycler = mRootView.findViewById(R.id.recent_recyclerView);
-        mAdapter = new RecentAdapter(getActivity());
-        mRecentRecycler.setLayoutManager(new LinearLayoutManager(getActivity()));
-
-    }
 
     private void PopulateUI() {
 
         if (mRecentList != null) {
+            mRecentRecycler.setVisibility(View.VISIBLE);
+            mDisplayNoDataMassage.setVisibility(View.GONE);
+
             mAdapter.setRecent(mRecentList);
             mRecentRecycler.setAdapter(mAdapter);
             mAdapter.notifyDataSetChanged();
@@ -92,12 +96,13 @@ public class RecentFragment extends Fragment {
             mAdapter.setOnClickItemListener(new RecentAdapter.OnClickItemListener() {
                 @Override
                 public void onItemClicked(int position) {
-                    Intent screenTwoIntent = new Intent(getActivity(), ChatMassagesActivity.class);
-                    startActivity(screenTwoIntent);
+                    Intent SendToScreenTwoIntent = new Intent(getActivity(), ChatMassagesActivity.class);
+                    startActivity(SendToScreenTwoIntent);
                 }
             });
         } else {
-            Toast.makeText(getActivity(), "rec is null", Toast.LENGTH_SHORT).show();
+            mRecentRecycler.setVisibility(View.GONE);
+            mDisplayNoDataMassage.setVisibility(View.VISIBLE);
         }
     }
 }

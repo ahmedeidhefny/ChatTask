@@ -21,7 +21,7 @@ public class PagerAdapter extends FragmentPagerAdapter {
                     R.string.tab_favorites
             };
 
-    ArrayList<Fragment> mFragments = new ArrayList();
+    private ArrayList<Fragment> mFragments = new ArrayList();
 
     private final Context mContext;
 

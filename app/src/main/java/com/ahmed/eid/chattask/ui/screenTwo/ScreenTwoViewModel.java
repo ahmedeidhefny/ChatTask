@@ -29,14 +29,14 @@ public class ScreenTwoViewModel extends ViewModel {
         compositeDisposable.add(APIClient.getInstance().getDataScreenTwo()
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-        .subscribe(new Consumer<ScreenTwoResponse>() {
-            @Override
-            public void accept(ScreenTwoResponse mAllData) throws Exception {
+                .subscribe(new Consumer<ScreenTwoResponse>() {
+                    @Override
+                    public void accept(ScreenTwoResponse mAllData) throws Exception {
 
-                mData.setValue(mAllData);
+                        mData.setValue(mAllData);
 
-            }
-        }));
+                    }
+                }));
 
 //        APIClient.getInstance().getDataScreenTwo().enqueue(new Callback<ScreenTwoResponse>() {
 //            @Override
