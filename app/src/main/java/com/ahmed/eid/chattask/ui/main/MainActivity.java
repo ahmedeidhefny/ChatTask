@@ -35,7 +35,7 @@ public class MainActivity extends AppCompatActivity {
     private ContentLoadingProgressBar mLoadingBar;
     private RelativeLayout mProgressLoadingLayout;
     private LinearLayout mNoInternetConnectionLayout;
-    private Button mRetryBtn;
+    private Button mRetryConnectionBtn;
     private ScreenOneViewModel mViewModel;
     private InternetConnectivity mInternetConnectivity;
 
@@ -54,7 +54,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        mRetryBtn.setOnClickListener(new View.OnClickListener() {
+        mRetryConnectionBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 recreate();
@@ -73,7 +73,7 @@ public class MainActivity extends AppCompatActivity {
         mLoadingBar.show();
 
         mNoInternetConnectionLayout = findViewById(R.id.noInternet_layout);
-        mRetryBtn = findViewById(R.id.retry_btn);
+        mRetryConnectionBtn = findViewById(R.id.retry_btn);
 
         mInternetConnectivity = new InternetConnectivity(this);
 
@@ -109,6 +109,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void handleTabs(ScreenOneResponse mData) {
+        mPagerAdapter.clearAllOldFragments();
         mPagerAdapter.addFragments(RecentFragment.newInstance(mData.getRecentList()));
         mPagerAdapter.addFragments(FavoriteFragment.newInstance(mData.getFavoriteList()));
         mPagerAdapter.notifyDataSetChanged();

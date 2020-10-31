@@ -49,4 +49,10 @@ public class PagerAdapter extends FragmentPagerAdapter {
     public void addFragments(Fragment fragment){
         mFragments.add(fragment);
     }
+
+    public void clearAllOldFragments(){
+        if (mFragments != null){
+            mFragments.clear();
+        }
+    }
 }

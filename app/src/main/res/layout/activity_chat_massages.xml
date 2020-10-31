@@ -6,7 +6,21 @@
     android:layout_height="match_parent"
     tools:context=".ui.screenTwo.ChatMassagesActivity">
 
+    <include
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        layout="@layout/partial_loading_bar"
+        android:layout_gravity="center"
+        />
+    <include
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        layout="@layout/partial_no_internet"
+        android:layout_gravity="center"
+        />
+
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/list_layout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/colorChatBackground">
@@ -111,7 +125,7 @@
                 android:textColor="@android:color/white"
                 android:textSize="18dp"
                 android:textStyle="bold"
-                tools:text="Ahmed Eid" />
+                android:text="His Name" />
 
 
         </LinearLayout>
